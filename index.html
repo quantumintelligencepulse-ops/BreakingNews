@@ -1,30 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Banking With Billy Cards</title>
-<style>
-body{font-family:sans-serif;background:#020617;color:#e5e7eb;margin:0;padding:2rem;}
-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;}
-.brand{color:#f97316;font-weight:700;text-transform:uppercase;font-size:0.9rem;}
-.nav a{color:#9ca3af;margin-left:1rem;text-decoration:none;font-size:0.85rem;}
-.grid{display:grid;gap:1rem;}
-.card{background:#0f172a;padding:1rem;border:1px solid #1f2937;border-radius:8px;}
-.card a{color:#f97316;text-decoration:none;font-size:1rem;}
-</style>
+  <meta charset="UTF-8" />
+  <title>Banking With Billy Cards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #020617;
+      --fg: #e5e7eb;
+      --accent: #f97316;
+      --card: #0f172a;
+      --border: #1f2937;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      padding: 2rem 1.5rem 4rem;
+    }
+    .shell {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+    .nav a {
+      margin-left: 1rem;
+      font-size: 0.85rem;
+      color: #9ca3af;
+      text-decoration: none;
+    }
+    .nav a:hover {
+      color: var(--accent);
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+    .card a {
+      color: var(--accent);
+      font-size: 1.1rem;
+      text-decoration: none;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+  </style>
 </head>
 <body>
-<header>
-<div class="brand">Banking With Billy Cards</div>
-<div class="nav">
-<a href="/">Home</a>
-<a href="/NEWS.html">News</a>
-</div>
-</header>
-<div class="grid">
-<div class="card"><a href="channels/yugioh/">Yu‑Gi‑Oh Channel</a></div>
-<div class="card"><a href="channels/pokemon/">Pokémon Channel</a></div>
-<div class="card"><a href="channels/magic/">Magic Channel</a></div>
-</div>
+  <div class="shell">
+    <header>
+      <div class="brand">Banking With Billy Cards</div>
+      <div class="nav">
+        <a href="/">Home</a>
+        <a href="/NEWS.html">News</a>
+      </div>
+    </header>
+
+    <h1>Select a channel</h1>
+    <div class="grid">
+      <div class="card"><a href="channels/yugioh/">Yu‑Gi‑Oh Channel</a></div>
+      <div class="card"><a href="channels/pokemon/">Pokémon Channel</a></div>
+      <div class="card"><a href="channels/magic/">Magic Channel</a></div>
+    </div>
+
+    <footer>
+      <div>© 2026 Banking With Billy. All rights reserved.</div>
+      <div><a href="/NEWS.html">Latest News</a></div>
+    </footer>
+  </div>
 </body>
 </html>
