@@ -4,15 +4,23 @@
 <meta charset="UTF-8">
 <title>Banking With Billy Cards</title>
 <style>
-body{font-family:sans-serif;background:#020617;color:#e5e7eb;margin:2rem;}
-h1{color:#f97316;margin-bottom:1rem;}
-a{color:#f97316;text-decoration:none;}
+body{font-family:sans-serif;background:#020617;color:#e5e7eb;margin:0;padding:2rem;}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;}
+.brand{color:#f97316;font-weight:700;text-transform:uppercase;font-size:0.9rem;}
+.nav a{color:#9ca3af;margin-left:1rem;text-decoration:none;font-size:0.85rem;}
 .grid{display:grid;gap:1rem;}
-.card{padding:1rem;border:1px solid #1f2937;border-radius:8px;background:#0f172a;}
+.card{background:#0f172a;padding:1rem;border:1px solid #1f2937;border-radius:8px;}
+.card a{color:#f97316;text-decoration:none;font-size:1rem;}
 </style>
 </head>
 <body>
-<h1>Banking With Billy Cards</h1>
+<header>
+<div class="brand">Banking With Billy Cards</div>
+<div class="nav">
+<a href="/">Home</a>
+<a href="/NEWS.html">News</a>
+</div>
+</header>
 <div class="grid">
 <div class="card"><a href="channels/yugioh/">Yu‑Gi‑Oh Channel</a></div>
 <div class="card"><a href="channels/pokemon/">Pokémon Channel</a></div>
