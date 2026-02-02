@@ -89,7 +89,6 @@
     font-size:12px;text-transform:uppercase;letter-spacing:0.12em;
   ">Front Page</button>
 
-  <!-- ⭐ ALL THREE BUTTONS CONNECT CORRECTLY -->
   <button onclick="location.href='channels/yugioh/index.html'" style="
     padding:6px 12px;border-radius:999px;border:1px solid transparent;
     color:var(--text-soft);background:transparent;font-size:12px;
@@ -102,7 +101,8 @@
     text-transform:uppercase;letter-spacing:0.12em;
   ">Pokémon</button>
 
-  <button onclick="location.href='channels/magic/index.html'" style="
+  <!-- ⭐ CAPITAL M FIXED -->
+  <button onclick="location.href='channels/Magic/index.html'" style="
     padding:6px 12px;border-radius:999px;border:1px solid transparent;
     color:var(--text-soft);background:transparent;font-size:12px;
     text-transform:uppercase;letter-spacing:0.12em;
@@ -141,6 +141,7 @@
 
   <!-- LEFT COLUMN -->
   <section>
+
     <!-- HERO ARTICLE -->
     <article style="
       background:linear-gradient(145deg,#181820,#101018);
@@ -166,7 +167,7 @@
       </div>
     </article>
 
-    <!-- FEED -->
+    <!-- FEED TITLE -->
     <div style="
       font-size:12px;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-soft);
       margin-bottom:8px;
@@ -275,6 +276,7 @@
   </aside>
 </main>
 
+<!-- FOOTER -->
 <footer style="
   max-width:1180px;margin:0 auto;padding:30px 20px 50px;
   font-size:12px;color:var(--text-soft);border-top:1px solid var(--border-soft);
@@ -284,6 +286,7 @@
   <span>Yu‑Gi‑Oh · Pokémon · Magic</span>
 </footer>
 
+<!-- AUTO UPDATE SCRIPT -->
 <script>
 async function loadChannel(channel) {
   try {
@@ -308,7 +311,7 @@ async function loadChannel(channel) {
   }
 }
 
-["yugioh", "pokemon", "magic"].forEach(loadChannel);
+["yugioh", "pokemon", "Magic"].forEach(loadChannel);
 </script>
 
 </body>
