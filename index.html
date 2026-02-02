@@ -1,98 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TCG News</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TCG News</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Georgia, serif;
+      background: #fff;
+      color: #111;
+      line-height: 1.6;
+    }
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #ffffff;
-            font-family: Georgia, serif;
-            color: #111;
-            line-height: 1.6;
-        }
+    header {
+      padding: 40px 0 20px;
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      border-bottom: 1px solid #eee;
+    }
 
-        header {
-            padding: 30px 0;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-            font-size: 32px;
-            font-weight: bold;
-            letter-spacing: -1px;
-        }
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-        .container {
-            max-width: 750px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+    .featured {
+      padding: 40px 0;
+      border-bottom: 1px solid #eee;
+    }
 
-        .card {
-            padding: 25px 0;
-            border-bottom: 1px solid #eee;
-            cursor: pointer;
-            transition: 0.2s ease;
-        }
+    .featured h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
 
-        .card:hover {
-            opacity: 0.75;
-        }
+    .featured p {
+      font-size: 18px;
+      color: #555;
+    }
 
-        .headline {
-            font-size: 26px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 40px 0;
+    }
 
-        .subheadline {
-            font-size: 17px;
-            color: #555;
-            margin-bottom: 12px;
-        }
+    .card {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 20px;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
 
-        .meta {
-            font-size: 14px;
-            color: #999;
-        }
+    .card:hover {
+      opacity: 0.8;
+    }
 
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            font-size: 14px;
-            color: #777;
-        }
-    </style>
+    .card h2 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      font-size: 14px;
+      color: #777;
+      border-top: 1px solid #eee;
+    }
+
+    @media (min-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-    TCG News
-</header>
+<header>TCG News</header>
 
 <div class="container">
 
-    <!-- Example Article Card -->
+  <section class="featured">
+    <h1>Yu‑Gi‑Oh’s 2026 Meta Is Shifting</h1>
+    <p>New archetypes are dominating tournaments while old staples fade. Here's what you need to know.</p>
+  </section>
+
+  <section class="grid">
     <div class="card">
-        <div class="headline">Sample Headline for a TCG News Article</div>
-        <div class="subheadline">A short description that feels like Medium and previews the story.</div>
-        <div class="meta">Published today</div>
+      <h2>Pokémon TCG: Scarlet & Violet Expansion</h2>
+      <p>Early leaks show powerful EX cards and new trainer mechanics. Full set drops next month.</p>
     </div>
 
     <div class="card">
-        <div class="headline">Another Example Headline for Your Layout</div>
-        <div class="subheadline">This is where your article summaries will go as you build the site.</div>
-        <div class="meta">Published today</div>
+      <h2>MTG’s Eldrazi Return Confirmed</h2>
+      <p>Wizards teases a cosmic-scale storyline for summer 2026. Spoilers expected at MagicCon.</p>
     </div>
+
+    <div class="card">
+      <h2>Yu‑Gi‑Oh Banlist Update Incoming</h2>
+      <p>Konami hints at major shakeups. Players speculate on Tearlaments, Kashtira, and Spright hits.</p>
+    </div>
+
+    <div class="card">
+      <h2>Pokémon Worlds 2026: Location Revealed</h2>
+      <p>The championship heads to Berlin. Qualifiers begin in March with new point system.</p>
+    </div>
+  </section>
 
 </div>
 
-<footer>
-    © 2026 TCG News
-</footer>
+<footer>© 2026 TCG News</footer>
 
 </body>
 </html>
