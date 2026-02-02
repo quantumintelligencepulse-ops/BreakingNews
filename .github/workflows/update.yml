@@ -11,10 +11,10 @@ jobs:
 
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: "3.11"
 
@@ -28,9 +28,11 @@ jobs:
         python build_cards_site.py
 
     - name: Commit and push changes
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        git config user.name "github-actions"
-        git config user.email "github-actions@github.com"
+        git config --global user.name "quantumintelligencepulse-ops"
+        git config --global user.email "quantumintelligencepulse@gmail.com"
         git add index.html
         git commit -m "Auto-update TCG homepage" || echo "No changes to commit"
         git push
