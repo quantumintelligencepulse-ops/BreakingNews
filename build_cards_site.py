@@ -1,6 +1,7 @@
 import requests
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
+from html import unescape
 
 HTML_TEMPLATE = r"""<!DOCTYPE html>
 <html lang="en">
@@ -37,7 +38,6 @@ body{
 }
 a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;border-radius:.6rem;}
-.wrap{max-width:1400px;margin:auto;padding:1.5rem;}
 .header{
   background:rgba(5,7,11,.96);
   border-bottom:1px solid var(--border);
@@ -152,7 +152,11 @@ img{max-width:100%;display:block;border-radius:.6rem;}
   border:1px solid var(--border);
   padding:1.2rem 1.3rem;border-radius:1rem;
   transition:.15s;
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:1rem;
 }
+.story-text{display:flex;flex-direction:column;}
 .story:hover{
   background:#111827;
   border-color:var(--accent);
@@ -163,9 +167,24 @@ img{max-width:100%;display:block;border-radius:.6rem;}
   letter-spacing:.08em;color:var(--muted);
   margin-bottom:.4rem;
 }
-.story h2{font-size:1.25rem;margin-bottom:.5rem;color:var(--accent-soft);}
-.story p{color:#cbd5e1;font-size:.95rem;line-height:1.6;}
-.story-meta{margin-top:.5rem;font-size:.8rem;color:var(--muted);}
+.story h2{font-size:1.1rem;margin-bottom:.4rem;color:var(--accent-soft);}
+.story p{color:#cbd5e1;font-size:.9rem;line-height:1.5;}
+.story-meta{margin-top:.4rem;font-size:.8rem;color:var(--muted);}
+.story-image-wrapper{
+  border-radius:.9rem;
+  overflow:hidden;
+  background:#020617;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:.8rem;
+  color:var(--muted);
+}
+.story-image-wrapper img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 .sidebar{display:flex;flex-direction:column;gap:1.4rem;}
 .sidebar-block{
   background:var(--panel);
@@ -262,6 +281,7 @@ footer{
   .section,.news-list{padding:0 1rem;}
   .channel-grid{grid-template-columns:1fr;}
   .footer-inner{grid-template-columns:1fr;padding:0 1rem;}
+  .story{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -422,10 +442,45 @@ def fetch_rss(url, limit=5):
             title = (item.findtext("title") or "").strip()
             link = (item.findtext("link") or "").strip()
             pub = (item.findtext("pubDate") or "").strip()
-            items.append({"title": title, "link": link, "pub": pub})
+            desc = (item.findtext("description") or "").strip()
+            # Try common media/image tags
+            media_ns = "{http://search.yahoo.com/mrss/}"
+            image = ""
+            media_content = item.find(f".//{media_ns}content")
+            if media_content is not None and "url" in media_content.attrib:
+                image = media_content.attrib["url"]
+            enclosure = item.find("enclosure")
+            if not image and enclosure is not None and enclosure.attrib.get("type","").startswith("image"):
+                image = enclosure.attrib.get("url","")
+            items.append({
+                "title": unescape(title),
+                "link": link,
+                "pub": pub,
+                "desc": clean_summary(desc),
+                "image": image
+            })
         return items
     except Exception:
         return []
+
+def clean_summary(text, max_len=220):
+    if not text:
+        return ""
+    # crude strip of HTML tags
+    out = []
+    inside = False
+    for ch in text:
+        if ch == "<":
+            inside = True
+        elif ch == ">":
+            inside = False
+        elif not inside:
+            out.append(ch)
+    s = " ".join("".join(out).split())
+    s = unescape(s)
+    if len(s) > max_len:
+        s = s[:max_len].rsplit(" ",1)[0] + "…"
+    return s
 
 def build_breaking_news(all_items):
     titles = [i["title"] for i in all_items[:6] if i["title"]]
@@ -433,36 +488,59 @@ def build_breaking_news(all_items):
         return "Live TCG coverage across Yu‑Gi‑Oh, Pokémon, and Magic •"
     return " • ".join(titles) + " •"
 
+def story_image_block(image_url):
+    if image_url:
+        return f"""  <div class="story-image-wrapper">
+    <img src="{image_url}" alt="">
+  </div>"""
+    return """  <div class="story-image-wrapper">
+    No image available
+  </div>"""
+
 def build_featured_stories(all_items):
     blocks = []
     for i, item in enumerate(all_items[:4]):
         label = "Feature" if i == 0 else "Update"
+        summary = item["desc"] or "Live coverage pulled from the TCG news stream. Click through for full details."
+        img_block = story_image_block(item.get("image",""))
         blocks.append(f"""
   <div class="story">
-    <div class="story-label">{label}</div>
-    <h2><a href="{item['link']}" target="_blank" rel="noopener noreferrer">{item['title']}</a></h2>
-    <p>Live coverage pulled from the TCG news stream. Click through for full details.</p>
-    <div class="story-meta">{item.get('pub','').split('+')[0]}</div>
+    <div class="story-text">
+      <div class="story-label">{label}</div>
+      <h2><a href="{item['link']}" target="_blank" rel="noopener noreferrer">{item['title']}</a></h2>
+      <p>{summary}</p>
+      <div class="story-meta">{item.get('pub','').split('+')[0]}</div>
+    </div>
+{img_block}
   </div>""")
     if not blocks:
         blocks.append("""
   <div class="story">
-    <div class="story-label">Feature</div>
-    <h2>No live stories available yet</h2>
-    <p>Once the feed engine pulls in data, this block will fill with live TCG headlines.</p>
-    <div class="story-meta">Waiting for first sync</div>
+    <div class="story-text">
+      <div class="story-label">Feature</div>
+      <h2>No live stories available yet</h2>
+      <p>Once the feed engine pulls in data, this block will fill with live TCG headlines.</p>
+      <div class="story-meta">Waiting for first sync</div>
+    </div>
+    <div class="story-image-wrapper">No image available</div>
   </div>""")
     return "\n".join(blocks)
 
 def build_quick_signals(all_items):
     if not all_items:
         return "      <div>• Live signals will appear here once feeds sync.</div>"
-    return "\n".join([f"      <div>• {i['title']}</div>" for i in all_items[:4]])
+    lines = []
+    for item in all_items[:4]:
+        lines.append(f"      <div>• {item['title']}</div>")
+    return "\n".join(lines)
 
 def build_trending_list(all_items):
     if not all_items:
         return "      <div>• Most‑read stories will appear here once feeds sync.</div>"
-    return "\n".join([f"      <div>• {i['title']}</div>" for i in all_items[:4]])
+    lines = []
+    for item in all_items[:4]:
+        lines.append(f"      <div>• {item['title']}</div>")
+    return "\n".join(lines)
 
 def build_daily_pulse():
     return """
@@ -492,7 +570,7 @@ def build_latest_news(all_items):
     <span class="news-tag">Waiting for first sync</span>
   </div>"""
     blocks = []
-    for item in all_items[:6]:
+    for item in all_items[:8]:
         blocks.append(f"""
   <div class="news-item">
     <a href="{item['link']}" target="_blank" rel="noopener noreferrer">{item['title']}</a>
@@ -509,7 +587,7 @@ def main():
 
     all_items = []
     for url in feeds:
-        all_items.extend(fetch_rss(url, limit=6))
+        all_items.extend(fetch_rss(url, limit=8))
 
     def sort_key(item):
         return item.get("pub", "")
@@ -525,7 +603,7 @@ def main():
     now = datetime.now(timezone.utc).strftime("Updated %Y-%m-%d %H:%M UTC")
 
     hero_title = "Live Signals Across Yu‑Gi‑Oh, Pokémon, and Magic"
-    hero_summary = "This homepage is powered by a live TCG feed engine pulling headlines from multiple open sources across the card gaming world."
+    hero_summary = "This homepage is powered by a live TCG feed engine pulling headlines and images from multiple open sources across the card gaming world."
     hero_meta = now
     hero_badge = "Powered by the Banking With Billy Cards feed engine."
 
