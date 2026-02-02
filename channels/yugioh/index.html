@@ -10,8 +10,8 @@
       --bg: #0a0a0c;
       --bg-soft: #141418;
       --card: #1a1a20;
-      --accent: #ff3b3b; /* Yu‑Gi‑Oh red */
-      --accent-soft: rgba(255, 59, 59, 0.18);
+      --accent: #ff1e1e;
+      --accent-soft: rgba(255, 30, 30, 0.18);
       --text-main: #f5f5f5;
       --text-soft: #b8b8c2;
       --border-soft: #262632;
@@ -21,7 +21,7 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: system-ui, sans-serif;
       background: radial-gradient(circle at top, #15151d 0, #050509 55%, #000 100%);
       color: var(--text-main);
       line-height: 1.7;
@@ -38,9 +38,6 @@
 
 <body>
 
-<!-- ============================
-     HEADER
-     ============================ -->
 <header>
   <div style="
     max-width:1180px;margin:0 auto;padding:14px 20px;
@@ -51,8 +48,8 @@
     <div style="display:flex;align-items:center;gap:10px;">
       <div style="
         width:26px;height:26px;border-radius:999px;
-        background:radial-gradient(circle at 30% 20%, #ffb3b3 0, #ff3b3b 40%, #b30000 100%);
-        box-shadow:0 0 18px rgba(255,59,59,0.7);
+        background:radial-gradient(circle at 30% 20%, #ffc2c2 0, #ff1e1e 40%, #b30000 100%);
+        box-shadow:0 0 18px rgba(255,30,30,0.7);
       "></div>
 
       <div>
@@ -65,18 +62,14 @@
       </div>
     </div>
 
-    <div style="display:flex;align-items:center;gap:10px;font-size:13px;">
-      <div onclick="location.href='../../index.html'" style="
-        padding:6px 12px;border-radius:999px;border:1px solid var(--accent);
-        background:var(--accent-soft);color:var(--accent);font-weight:600;cursor:pointer;
-      ">Back to Homepage</div>
-    </div>
+    <div onclick="location.href='../../index.html'" style="
+      padding:6px 12px;border-radius:999px;border:1px solid var(--accent);
+      background:var(--accent-soft);color:var(--accent);font-weight:600;cursor:pointer;
+      font-size:13px;
+    ">Back to Homepage</div>
   </div>
 </header>
 
-<!-- ============================
-     NAVIGATION
-     ============================ -->
 <nav style="
   max-width:1180px;margin:0 auto;padding:6px 20px 10px;
   display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;
@@ -93,16 +86,13 @@
     text-transform:uppercase;letter-spacing:0.12em;
   ">Pokémon</button>
 
-  <button onclick="location.href='../magic/index.html'" style="
+  <button onclick="location.href='../Magic/index.html'" style="
     padding:6px 12px;border-radius:999px;border:1px solid transparent;
     color:var(--text-soft);background:transparent;font-size:12px;
     text-transform:uppercase;letter-spacing:0.12em;
   ">Magic</button>
 </nav>
 
-<!-- ============================
-     BREAKING TICKER
-     ============================ -->
 <section style="
   border-top:1px solid var(--border-soft);
   border-bottom:1px solid var(--border-soft);
@@ -115,7 +105,7 @@
   ">
     <span style="
       width:6px;height:6px;border-radius:999px;background:var(--accent);
-      box-shadow:0 0 10px rgba(255,59,59,0.8);
+      box-shadow:0 0 10px rgba(255,30,30,0.8);
     "></span>
 
     <span style="color:var(--accent);font-weight:700;">
@@ -126,26 +116,20 @@
   </div>
 </section>
 
-<!-- ============================
-     MAIN LAYOUT
-     ============================ -->
 <main style="
   max-width:1180px;margin:32px auto 60px;padding:0 20px;
   display:grid;grid-template-columns:2fr 1fr;gap:32px;
 ">
 
-  <!-- ============================
-       HERO ARTICLE
-       ============================ -->
   <section>
     <article style="
       background:linear-gradient(145deg,#1a1a22,#101018);
       border-radius:18px;padding:22px;border:1px solid var(--border-soft);
       box-shadow:0 18px 40px rgba(0,0,0,0.7);margin-bottom:26px;
     ">
-      <div style="
-        font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent);
-      ">Top Yu‑Gi‑Oh Story</div>
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent);">
+        Top Yu‑Gi‑Oh Story
+      </div>
 
       <h1 id="ygo-hero-headline" style="font-size:28px;font-weight:800;margin-bottom:10px;">
         Loading…
@@ -162,15 +146,11 @@
       </div>
     </article>
 
-    <!-- ============================
-         FEED
-         ============================ -->
     <div style="
       font-size:12px;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-soft);
       margin-bottom:8px;
     ">Latest Yu‑Gi‑Oh Articles</div>
 
-    <!-- FEED ITEM 1 -->
     <article style="
       padding:16px 0;border-bottom:1px solid var(--border-soft);
       display:flex;gap:14px;cursor:pointer;
@@ -190,7 +170,6 @@
       </div>
     </article>
 
-    <!-- FEED ITEM 2 -->
     <article style="
       padding:16px 0;border-bottom:1px solid var(--border-soft);
       display:flex;gap:14px;cursor:pointer;
@@ -212,12 +191,8 @@
 
   </section>
 
-  <!-- ============================
-       SIDEBAR
-       ============================ -->
   <aside style="display:flex;flex-direction:column;gap:22px;">
 
-    <!-- TRENDING CARDS -->
     <section class="panel">
       <div style="
         font-size:13px;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-soft);
@@ -243,34 +218,9 @@
       </div>
     </section>
 
-    <!-- COMMUNITY PULSE -->
-    <section class="panel">
-      <div style="
-        font-size:13px;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-soft);
-        margin-bottom:10px;
-      ">Yu‑Gi‑Oh Community Pulse</div>
-
-      <div style="padding:10px 0;border-bottom:1px solid #20202a;">
-        <div style="font-size:13px;color:var(--accent);">@yugiohcentral</div>
-        <div id="ygo-social1" style="font-size:13px;color:var(--text-soft);">
-          Loading…
-        </div>
-      </div>
-
-      <div style="padding:10px 0;">
-        <div style="font-size:13px;color:var(--accent);">@duelistsunited</div>
-        <div id="ygo-social2" style="font-size:13px;color:var(--text-soft);">
-          Loading…
-        </div>
-      </div>
-    </section>
-
   </aside>
 </main>
 
-<!-- ============================
-     FOOTER
-     ============================ -->
 <footer style="
   max-width:1180px;margin:0 auto;padding:30px 20px 50px;
   font-size:12px;color:var(--text-soft);border-top:1px solid var(--border-soft);
@@ -280,22 +230,17 @@
   <span>Part of the TCG Network</span>
 </footer>
 
-<!-- ============================
-     AUTO‑UPDATE SCRIPT
-     ============================ -->
 <script>
 async function loadYGO() {
   try {
     const res = await fetch("data.json");
     const data = await res.json();
 
-    // HERO
     document.getElementById("ygo-hero-headline").textContent = data.hero.headline;
     document.getElementById("ygo-hero-summary").textContent = data.hero.summary;
     document.getElementById("ygo-hero-source").textContent = data.hero.source;
     document.getElementById("ygo-hero-time").textContent = data.hero.time;
 
-    // FEED
     document.getElementById("ygo-feed1-headline").textContent = data.feed[0].headline;
     document.getElementById("ygo-feed1-summary").textContent = data.feed[0].summary;
     document.getElementById("ygo-feed1-thumb").src = data.feed[0].thumbnail;
@@ -304,15 +249,9 @@ async function loadYGO() {
     document.getElementById("ygo-feed2-summary").textContent = data.feed[1].summary;
     document.getElementById("ygo-feed2-thumb").src = data.feed[1].thumbnail;
 
-    // TRENDS
     document.getElementById("ygo-trend1").textContent = data.trending[0];
     document.getElementById("ygo-trend2").textContent = data.trending[1];
 
-    // SOCIAL
-    document.getElementById("ygo-social1").textContent = data.social[0];
-    document.getElementById("ygo-social2").textContent = data.social[1];
-
-    // BREAKING
     document.getElementById("ygo-breaking").textContent = data.breaking;
 
   } catch (e) {
