@@ -1,1 +1,27 @@
+name: Run Yu-Gi-Oh Engine
 
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  run-engine:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install requests yt-dlp
+
+      - name: Run Yu-Gi-Oh Engine
+        run: python channels/yugioh/yugioh_engine.py
