@@ -37,7 +37,6 @@
       padding: 0 20px;
     }
 
-    /* SECTION LABEL */
     .section-label {
       font-size: 18px;
       font-weight: 700;
@@ -49,18 +48,24 @@
 
     /* HERO STORY */
     .hero {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
       padding-bottom: 40px;
       border-bottom: 1px solid #222;
     }
 
+    .hero img {
+      width: 100%;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
     .hero h1 {
-      font-size: 36px;
+      font-size: 34px;
       font-weight: 800;
       color: #ff7a00;
-      margin: 0;
+      margin: 0 0 10px 0;
     }
 
     .hero p {
@@ -77,6 +82,9 @@
     }
 
     .rail-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 15px;
       margin-bottom: 20px;
       cursor: pointer;
       transition: 0.2s ease;
@@ -85,6 +93,13 @@
     .rail-item:hover {
       opacity: 0.8;
       transform: translateX(4px);
+    }
+
+    .rail-item img {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 4px;
     }
 
     .rail-item h3 {
@@ -109,8 +124,6 @@
     }
 
     .card {
-      border-bottom: 1px solid #222;
-      padding-bottom: 20px;
       cursor: pointer;
       transition: 0.2s ease;
     }
@@ -118,6 +131,14 @@
     .card:hover {
       opacity: 0.85;
       transform: translateY(-3px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 12px;
     }
 
     .card h2 {
@@ -141,8 +162,14 @@
       margin-top: 40px;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
       .grid {
+        grid-template-columns: 1fr;
+      }
+      .rail-item {
         grid-template-columns: 1fr;
       }
     }
@@ -160,8 +187,11 @@
   <!-- HERO STORY -->
   <div class="section-label">Top Story</div>
   <section class="hero">
-    <h1>Yu‑Gi‑Oh’s 2026 Meta Faces Major Shakeup</h1>
-    <p>New tournament data reveals a dramatic shift in competitive play as emerging archetypes challenge long‑standing staples.</p>
+    <img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367f" alt="Hero Image">
+    <div>
+      <h1>Yu‑Gi‑Oh’s 2026 Meta Faces Major Shakeup</h1>
+      <p>New tournament data reveals a dramatic shift in competitive play as emerging archetypes challenge long‑standing staples.</p>
+    </div>
   </section>
 
   <!-- HEADLINE RAIL -->
@@ -169,18 +199,27 @@
   <section class="rail">
 
     <div class="rail-item">
-      <h3>Pokémon TCG: Scarlet & Violet Expansion Leaks</h3>
-      <p>New EX mechanics spark early hype across competitive circles.</p>
+      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367f" alt="">
+      <div>
+        <h3>Pokémon TCG: Scarlet & Violet Expansion Leaks</h3>
+        <p>New EX mechanics spark early hype across competitive circles.</p>
+      </div>
     </div>
 
     <div class="rail-item">
-      <h3>MTG Announces Return of the Eldrazi</h3>
-      <p>Wizards confirms a cosmic‑scale storyline for summer 2026.</p>
+      <img src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980" alt="">
+      <div>
+        <h3>MTG Announces Return of the Eldrazi</h3>
+        <p>Wizards confirms a cosmic‑scale storyline for summer 2026.</p>
+      </div>
     </div>
 
     <div class="rail-item">
-      <h3>Yu‑Gi‑Oh Banlist Rumors Intensify</h3>
-      <p>Players speculate on hits to Tearlaments, Kashtira, and Spright.</p>
+      <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" alt="">
+      <div>
+        <h3>Yu‑Gi‑Oh Banlist Rumors Intensify</h3>
+        <p>Players speculate on hits to Tearlaments, Kashtira, and Spright.</p>
+      </div>
     </div>
 
   </section>
@@ -190,21 +229,25 @@
   <section class="grid">
 
     <div class="card">
+      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367f" alt="">
       <h2>Pokémon Worlds 2026 Heads to Berlin</h2>
       <p>New point system and qualification rules shake up the competitive landscape.</p>
     </div>
 
     <div class="card">
+      <img src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980" alt="">
       <h2>MTG Arena Introduces New Ranked Format</h2>
       <p>Players react to the biggest digital overhaul since 2023.</p>
     </div>
 
     <div class="card">
+      <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" alt="">
       <h2>Yu‑Gi‑Oh Master Duel Adds New Solo Gates</h2>
       <p>Konami expands lore‑driven content with fresh challenges.</p>
     </div>
 
     <div class="card">
+      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367f" alt="">
       <h2>Pokémon TCG Online Sunset Date Announced</h2>
       <p>Transition to Live accelerates as support winds down.</p>
     </div>
