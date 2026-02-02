@@ -5,20 +5,24 @@
 <title>Banking With Billy Cards</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-:root{--bg:#020617;--fg:#e5e7eb;--accent:#f97316;--card:#0f172a;--border:#1f2937;}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--fg);padding:2rem 1.5rem 4rem;}
-.shell{max-width:960px;margin:0 auto;}
-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;}
-.brand{font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.9rem;color:var(--accent);}
-.nav a{margin-left:1rem;font-size:.85rem;color:#9ca3af;text-decoration:none;}
+:root{--bg:#0b0f19;--fg:#e5e7eb;--accent:#f97316;--card:#111827;--border:#1f2937;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--fg);}
+.shell{max-width:1100px;margin:auto;padding:2rem 1.5rem;}
+header{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;border-bottom:1px solid var(--border);}
+.brand{font-weight:800;font-size:1rem;letter-spacing:.08em;color:var(--accent);}
+.nav a{margin-left:1rem;color:#9ca3af;text-decoration:none;font-size:.9rem;}
 .nav a:hover{color:var(--accent);}
-h1{font-size:1.8rem;margin-bottom:1.5rem;}
-.grid{display:grid;gap:1.5rem;}
-.card{background:var(--card);border:1px solid var(--border);border-radius:1rem;padding:1.5rem;}
+.hero{margin:2.5rem 0;padding:2rem;border-radius:1rem;background:var(--card);border:1px solid var(--border);}
+.hero h1{font-size:2rem;margin-bottom:1rem;color:var(--accent);}
+.hero p{color:#cbd5e1;font-size:1rem;line-height:1.5;}
+.section-title{font-size:1.4rem;margin:2rem 0 1rem;color:var(--accent);}
+.grid{display:grid;gap:1.2rem;}
+.card{background:var(--card);padding:1.2rem;border:1px solid var(--border);border-radius:.8rem;}
 .card a{color:var(--accent);font-size:1.1rem;text-decoration:none;}
 .card a:hover{text-decoration:underline;}
-footer{margin-top:3rem;font-size:.8rem;color:#6b7280;border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;}
+.news-list div{padding:.8rem 0;border-bottom:1px solid var(--border);}
+footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);font-size:.8rem;color:#6b7280;display:flex;justify-content:space-between;flex-wrap:wrap;}
 </style>
 </head>
 <body>
@@ -32,17 +36,27 @@ footer{margin-top:3rem;font-size:.8rem;color:#6b7280;border-top:1px solid var(--
 </div>
 </header>
 
-<h1>Select a channel</h1>
+<div class="hero">
+<h1>Welcome to the Card Gaming News Hub</h1>
+<p>Your daily source for Yu‑Gi‑Oh, Pokémon, and Magic: The Gathering updates, market moves, deck tech, and breaking card news across all Billy channels.</p>
+</div>
 
+<div class="section-title">Explore Channels</div>
 <div class="grid">
 <div class="card"><a href="channels/yugioh/">Yu‑Gi‑Oh Channel</a></div>
 <div class="card"><a href="channels/pokemon/">Pokémon Channel</a></div>
 <div class="card"><a href="channels/magic/">Magic Channel</a></div>
 </div>
 
+<div class="section-title">Latest News</div>
+<div class="news-list" id="latest-news">
+<!-- Your script will auto‑insert latest articles here -->
+<div>Loading latest articles…</div>
+</div>
+
 <footer>
 <div>© 2026 Banking With Billy. All rights reserved.</div>
-<div><a href="/NEWS.html">Latest News</a></div>
+<div><a href="/NEWS.html" style="color:#9ca3af;text-decoration:none;">Full News Feed</a></div>
 </footer>
 
 </div>
