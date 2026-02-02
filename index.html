@@ -6,59 +6,115 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body{margin:0;font-family:system-ui,sans-serif;background:#0b0f19;color:#e5e7eb;}
-.topbar{background:#111827;border-bottom:1px solid #1f2937;padding:1rem;}
-.topbar-inner{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;}
-.brand{color:#f97316;font-weight:700;letter-spacing:.05em;text-transform:uppercase;font-size:1rem;}
+.wrap{max-width:1200px;margin:auto;padding:1.5rem;}
+/* NAV */
+.topbar{background:#111827;border-bottom:1px solid #1f2937;padding:1rem 0;}
+.nav-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;}
+.brand{color:#f97316;font-weight:800;letter-spacing:.05em;text-transform:uppercase;}
 .nav a{color:#9ca3af;margin-left:1rem;text-decoration:none;font-size:.9rem;}
 .nav a:hover{color:#f97316;}
-.hero{max-width:1100px;margin:2rem auto;padding:2rem;background:#111827;border:1px solid #1f2937;border-radius:1rem;}
-.hero h1{color:#f97316;margin-bottom:1rem;font-size:1.8rem;}
-.section{max-width:1100px;margin:2rem auto;}
-.section h2{color:#f97316;margin-bottom:1rem;font-size:1.3rem;}
-.grid{display:grid;gap:1rem;}
-.card{background:#111827;border:1px solid #1f2937;padding:1rem;border-radius:.8rem;}
+/* TICKER */
+.ticker{background:#111827;border-bottom:1px solid #1f2937;padding:.6rem 0;margin-top:.5rem;}
+.ticker span{color:#f97316;font-weight:600;margin-right:.5rem;}
+/* LAYOUT */
+.main{display:grid;grid-template-columns:2fr 1fr;gap:2rem;margin-top:2rem;}
+/* FEATURED STORY */
+.featured{background:#111827;border:1px solid #1f2937;padding:1.5rem;border-radius:1rem;}
+.featured h1{color:#f97316;margin-bottom:.8rem;font-size:1.7rem;}
+.featured p{color:#cbd5e1;line-height:1.5;}
+/* SIDEBAR */
+.sidebar-block{background:#111827;border:1px solid #1f2937;padding:1rem;border-radius:.8rem;margin-bottom:1.5rem;}
+.sidebar-block h3{color:#f97316;margin-bottom:.8rem;font-size:1.1rem;}
+.sidebar-block div{margin-bottom:.6rem;color:#cbd5e1;font-size:.9rem;}
+/* CHANNEL GRID */
+.section-title{color:#f97316;font-size:1.3rem;margin:2rem 0 1rem;}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(3,1fr);}
+.card{background:#111827;border:1px solid #1f2937;padding:1rem;border-radius:.8rem;text-align:center;}
 .card a{color:#f97316;font-size:1.1rem;text-decoration:none;}
 .card a:hover{text-decoration:underline;}
-footer{max-width:1100px;margin:3rem auto;padding-top:1rem;border-top:1px solid #1f2937;color:#6b7280;font-size:.8rem;display:flex;justify-content:space-between;}
+/* LATEST NEWS */
+.news-item{padding:.8rem 0;border-bottom:1px solid #1f2937;}
+.news-item a{color:#e5e7eb;text-decoration:none;}
+.news-item a:hover{color:#f97316;}
+/* FOOTER */
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #1f2937;color:#6b7280;font-size:.8rem;display:flex;justify-content:space-between;flex-wrap:wrap;}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <div class="topbar">
-  <div class="topbar-inner">
+  <div class="nav-inner">
     <div class="brand">Banking With Billy Cards</div>
     <div class="nav">
       <a href="/">Home</a>
       <a href="/NEWS.html">News</a>
+      <a href="/channels/yugioh/">Yu‑Gi‑Oh</a>
+      <a href="/channels/pokemon/">Pokémon</a>
+      <a href="/channels/magic/">Magic</a>
     </div>
   </div>
 </div>
 
-<div class="hero">
-  <h1>Your Daily Card Gaming News Hub</h1>
-  <p>Covering Yu‑Gi‑Oh, Pokémon, and Magic: The Gathering with real‑time updates, market moves, and channel‑wide coverage from Billy.</p>
-</div>
-
-<div class="section">
-  <h2>Explore Channels</h2>
-  <div class="grid">
-    <div class="card"><a href="channels/yugioh/">Yu‑Gi‑Oh Channel</a></div>
-    <div class="card"><a href="channels/pokemon/">Pokémon Channel</a></div>
-    <div class="card"><a href="channels/magic/">Magic Channel</a></div>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="wrap">
+    <span>Top Stories:</span>
+    Yu‑Gi‑Oh banlist rumors heat up • Pokémon market spikes after leaks • Magic prices jump on reprint news
   </div>
 </div>
 
-<div class="section">
-  <h2>Latest Headlines</h2>
-  <div id="latest-news">
-    <div class="card">Loading latest articles…</div>
+<div class="wrap">
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <!-- FEATURED STORY -->
+  <div class="featured">
+    <h1>Today’s Big Moves Across Yu‑Gi‑Oh, Pokémon, and Magic</h1>
+    <p>Live coverage of the biggest shifts in card prices, pull rates, set leaks, and competitive meta updates across all major TCGs. Updated throughout the day as new signals come in.</p>
   </div>
+
+  <!-- SIDEBAR -->
+  <div>
+    <div class="sidebar-block">
+      <h3>Quick Signals</h3>
+      <div>• Pokémon singles heating up ahead of next set</div>
+      <div>• Yu‑Gi‑Oh meta shifts after new tournament results</div>
+      <div>• Magic reprint waves affecting secondary markets</div>
+    </div>
+
+    <div class="sidebar-block">
+      <h3>Trending Now</h3>
+      <div>• Top 10 pulls this week</div>
+      <div>• Most expensive cards today</div>
+      <div>• Decks dominating locals</div>
+      <div>• Market movers in the last 24 hours</div>
+    </div>
+  </div>
+
 </div>
 
+<!-- CHANNEL GRID -->
+<div class="section-title">Explore Channels</div>
+<div class="grid">
+  <div class="card"><a href="channels/yugioh/">Yu‑Gi‑Oh Channel</a></div>
+  <div class="card"><a href="channels/pokemon/">Pokémon Channel</a></div>
+  <div class="card"><a href="channels/magic/">Magic Channel</a></div>
+</div>
+
+<!-- LATEST NEWS -->
+<div class="section-title">Latest Articles</div>
+<div id="latest-news">
+  <div class="news-item"><a>Loading latest articles…</a></div>
+</div>
+
+<!-- FOOTER -->
 <footer>
   <div>© 2026 Banking With Billy. All rights reserved.</div>
   <div><a href="/NEWS.html" style="color:#9ca3af;text-decoration:none;">Full News Feed</a></div>
 </footer>
 
+</div>
 </body>
 </html>
