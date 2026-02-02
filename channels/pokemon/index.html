@@ -10,7 +10,7 @@
       --bg: #0a0a0c;
       --bg-soft: #141418;
       --card: #1a1a20;
-      --accent: #ffcb05; /* Pokémon yellow */
+      --accent: #ffcb05;
       --accent-soft: rgba(255, 203, 5, 0.18);
       --text-main: #f5f5f5;
       --text-soft: #b8b8c2;
@@ -38,7 +38,6 @@
 
 <body>
 
-<!-- HEADER -->
 <header>
   <div style="
     max-width:1180px;margin:0 auto;padding:14px 20px;
@@ -71,7 +70,6 @@
   </div>
 </header>
 
-<!-- NAVIGATION -->
 <nav style="
   max-width:1180px;margin:0 auto;padding:6px 20px 10px;
   display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;
@@ -88,14 +86,13 @@
     font-size:12px;text-transform:uppercase;letter-spacing:0.12em;
   ">Pokémon</button>
 
-  <button onclick="location.href='../magic/index.html'" style="
+  <button onclick="location.href='../Magic/index.html'" style="
     padding:6px 12px;border-radius:999px;border:1px solid transparent;
     color:var(--text-soft);background:transparent;font-size:12px;
     text-transform:uppercase;letter-spacing:0.12em;
   ">Magic</button>
 </nav>
 
-<!-- BREAKING TICKER -->
 <section style="
   border-top:1px solid var(--border-soft);
   border-bottom:1px solid var(--border-soft);
@@ -119,15 +116,12 @@
   </div>
 </section>
 
-<!-- MAIN LAYOUT -->
 <main style="
   max-width:1180px;margin:32px auto 60px;padding:0 20px;
   display:grid;grid-template-columns:2fr 1fr;gap:32px;
 ">
 
-  <!-- LEFT COLUMN -->
   <section>
-    <!-- HERO ARTICLE -->
     <article style="
       background:linear-gradient(145deg,#1a1a22,#101018);
       border-radius:18px;padding:22px;border:1px solid var(--border-soft);
@@ -152,13 +146,11 @@
       </div>
     </article>
 
-    <!-- FEED TITLE -->
     <div style="
       font-size:12px;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-soft);
       margin-bottom:8px;
     ">Latest Pokémon Articles</div>
 
-    <!-- FEED ITEM 1 -->
     <article style="
       padding:16px 0;border-bottom:1px solid var(--border-soft);
       display:flex;gap:14px;cursor:pointer;
@@ -178,7 +170,6 @@
       </div>
     </article>
 
-    <!-- FEED ITEM 2 -->
     <article style="
       padding:16px 0;border-bottom:1px solid var(--border-soft);
       display:flex;gap:14px;cursor:pointer;
@@ -200,10 +191,8 @@
 
   </section>
 
-  <!-- RIGHT SIDEBAR -->
   <aside style="display:flex;flex-direction:column;gap:22px;">
 
-    <!-- TRENDING -->
     <section class="panel">
       <div style="
         font-size:13px;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-soft);
@@ -229,7 +218,6 @@
       </div>
     </section>
 
-    <!-- COMMUNITY -->
     <section class="panel">
       <div style="
         font-size:13px;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-soft);
@@ -254,7 +242,6 @@
   </aside>
 </main>
 
-<!-- FOOTER -->
 <footer style="
   max-width:1180px;margin:0 auto;padding:30px 20px 50px;
   font-size:12px;color:var(--text-soft);border-top:1px solid var(--border-soft);
@@ -264,7 +251,6 @@
   <span>Part of the TCG Network</span>
 </footer>
 
-<!-- AUTO UPDATE SCRIPT -->
 <script>
 async function loadPKM() {
   try {
