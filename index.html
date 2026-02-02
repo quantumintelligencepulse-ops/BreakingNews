@@ -38,6 +38,7 @@
 
 <body>
 
+<!-- HEADER -->
 <header>
   <div style="
     max-width:1180px;margin:0 auto;padding:14px 20px;
@@ -77,6 +78,7 @@
   </div>
 </header>
 
+<!-- NAVIGATION -->
 <nav style="
   max-width:1180px;margin:0 auto;padding:6px 20px 10px;
   display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;
@@ -87,7 +89,7 @@
     font-size:12px;text-transform:uppercase;letter-spacing:0.12em;
   ">Front Page</button>
 
-  <!-- ⭐ FIXED PATH -->
+  <!-- ⭐ FIXED YUGIOH BUTTON -->
   <button onclick="location.href='channels/yugioh/index.html'" style="
     padding:6px 12px;border-radius:999px;border:1px solid transparent;
     color:var(--text-soft);background:transparent;font-size:12px;
@@ -107,6 +109,7 @@
   ">Magic</button>
 </nav>
 
+<!-- BREAKING TICKER -->
 <section style="
   border-top:1px solid var(--border-soft);
   border-bottom:1px solid var(--border-soft);
@@ -130,12 +133,15 @@
   </div>
 </section>
 
+<!-- MAIN LAYOUT -->
 <main style="
   max-width:1180px;margin:32px auto 60px;padding:0 20px;
   display:grid;grid-template-columns:2fr 1fr;gap:32px;
 ">
 
+  <!-- LEFT COLUMN -->
   <section>
+    <!-- HERO ARTICLE -->
     <article style="
       background:linear-gradient(145deg,#181820,#101018);
       border-radius:18px;padding:22px;border:1px solid var(--border-soft);
@@ -160,11 +166,13 @@
       </div>
     </article>
 
+    <!-- FEED -->
     <div style="
       font-size:12px;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-soft);
       margin-bottom:8px;
     ">Latest across Yu‑Gi‑Oh, Pokémon & Magic</div>
 
+    <!-- FEED ITEM: YUGIOH -->
     <article style="
       padding:16px 0;border-bottom:1px solid var(--border-soft);
       display:flex;gap:14px;cursor:pointer;
@@ -184,6 +192,7 @@
       </div>
     </article>
 
+    <!-- FEED ITEM: POKEMON -->
     <article style="
       padding:16px 0;border-bottom:1px solid var(--border-soft);
       display:flex;gap:14px;cursor:pointer;
@@ -203,6 +212,7 @@
       </div>
     </article>
 
+    <!-- FEED ITEM: MAGIC -->
     <article style="
       padding:16px 0;border-bottom:1px solid var(--border-soft);
       display:flex;gap:14px;cursor:pointer;
@@ -224,8 +234,10 @@
 
   </section>
 
+  <!-- RIGHT SIDEBAR -->
   <aside style="display:flex;flex-direction:column;gap:22px;">
 
+    <!-- TRENDING CARDS -->
     <section class="panel">
       <div style="
         font-size:13px;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-soft);
@@ -263,6 +275,7 @@
   </aside>
 </main>
 
+<!-- FOOTER -->
 <footer style="
   max-width:1180px;margin:0 auto;padding:30px 20px 50px;
   font-size:12px;color:var(--text-soft);border-top:1px solid var(--border-soft);
@@ -272,6 +285,7 @@
   <span>Yu‑Gi‑Oh · Pokémon · Magic</span>
 </footer>
 
+<!-- AUTO‑UPDATE SCRIPT -->
 <script>
 async function loadChannel(channel) {
   try {
