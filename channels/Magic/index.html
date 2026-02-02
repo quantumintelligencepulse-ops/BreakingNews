@@ -1,3 +1,304 @@
-<h1>Magic: The Gathering Channel</h1>
-<p>Articles and videos for Billy’s SpellBook.</p>
-<a href="/">Back to Banking With Billy Cards</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Magic: The Gathering News — Banking With Billy</title>
+
+  <style>
+    :root {
+      --bg: #0a0a0c;
+      --bg-soft: #141418;
+      --card: #1a1a20;
+      --accent: #8a2be2; /* MTG purple */
+      --accent-soft: rgba(138, 43, 226, 0.18);
+      --text-main: #f5f5f5;
+      --text-soft: #b8b8c2;
+      --border-soft: #262632;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #15151d 0, #050509 55%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    .panel {
+      background: var(--bg-soft);
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      padding: 16px 16px 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <div style="
+    max-width:1180px;margin:0 auto;padding:14px 20px;
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(10,10,15,0.96);backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--border-soft);
+  ">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="
+        width:26px;height:26px;border-radius:999px;
+        background:radial-gradient(circle at 30% 20%, #e8d4ff 0, #8a2be2 40%, #5a1a99 100%);
+        box-shadow:0 0 18px rgba(138,43,226,0.7);
+      "></div>
+
+      <div>
+        <div style="font-weight:800;letter-spacing:0.08em;font-size:14px;text-transform:uppercase;">
+          BANKING WITH BILLY
+        </div>
+        <div style="font-size:11px;text-transform:uppercase;color:var(--text-soft);letter-spacing:0.16em;">
+          Magic: The Gathering Newsroom
+        </div>
+      </div>
+    </div>
+
+    <div onclick="location.href='../../index.html'" style="
+      padding:6px 12px;border-radius:999px;border:1px solid var(--accent);
+      background:var(--accent-soft);color:var(--accent);font-weight:600;cursor:pointer;
+      font-size:13px;
+    ">Back to Homepage</div>
+  </div>
+</header>
+
+<!-- NAVIGATION -->
+<nav style="
+  max-width:1180px;margin:0 auto;padding:6px 20px 10px;
+  display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;
+">
+  <button onclick="location.href='../yugioh/index.html'" style="
+    padding:6px 12px;border-radius:999px;border:1px solid transparent;
+    color:var(--text-soft);background:transparent;font-size:12px;
+    text-transform:uppercase;letter-spacing:0.12em;
+  ">Yu‑Gi‑Oh</button>
+
+  <button onclick="location.href='../pokemon/index.html'" style="
+    padding:6px 12px;border-radius:999px;border:1px solid transparent;
+    color:var(--text-soft);background:transparent;font-size:12px;
+    text-transform:uppercase;letter-spacing:0.12em;
+  ">Pokémon</button>
+
+  <button style="
+    padding:6px 12px;border-radius:999px;border:1px solid var(--accent);
+    background:var(--accent-soft);color:var(--accent);font-weight:600;
+    font-size:12px;text-transform:uppercase;letter-spacing:0.12em;
+  ">Magic</button>
+</nav>
+
+<!-- BREAKING TICKER -->
+<section style="
+  border-top:1px solid var(--border-soft);
+  border-bottom:1px solid var(--border-soft);
+  background:#0f0f15;
+">
+  <div style="
+    max-width:1180px;margin:0 auto;padding:8px 20px;
+    display:flex;align-items:center;gap:12px;font-size:12px;
+    color:var(--text-soft);text-transform:uppercase;letter-spacing:0.16em;
+  ">
+    <span style="
+      width:6px;height:6px;border-radius:999px;background:var(--accent);
+      box-shadow:0 0 10px rgba(138,43,226,0.8);
+    "></span>
+
+    <span style="color:var(--accent);font-weight:700;">
+      Magic Breaking
+    </span>
+
+    <span id="mtg-breaking">Loading latest Magic updates…</span>
+  </div>
+</section>
+
+<!-- MAIN LAYOUT -->
+<main style="
+  max-width:1180px;margin:32px auto 60px;padding:0 20px;
+  display:grid;grid-template-columns:2fr 1fr;gap:32px;
+">
+
+  <!-- LEFT COLUMN -->
+  <section>
+    <!-- HERO ARTICLE -->
+    <article style="
+      background:linear-gradient(145deg,#1a1a22,#101018);
+      border-radius:18px;padding:22px;border:1px solid var(--border-soft);
+      box-shadow:0 18px 40px rgba(0,0,0,0.7);margin-bottom:26px;
+    ">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent);">
+        Top Magic Story
+      </div>
+
+      <h1 id="mtg-hero-headline" style="font-size:28px;font-weight:800;margin-bottom:10px;">
+        Loading…
+      </h1>
+
+      <p id="mtg-hero-summary" style="font-size:15px;color:var(--text-soft);margin-bottom:16px;">
+        Please wait while we load the latest Magic news.
+      </p>
+
+      <div style="font-size:12px;color:var(--text-soft);display:flex;gap:10px;">
+        <span id="mtg-hero-source">—</span>
+        <span style="width:4px;height:4px;border-radius:999px;background:var(--border-soft);"></span>
+        <span id="mtg-hero-time">—</span>
+      </div>
+    </article>
+
+    <!-- FEED -->
+    <div style="
+      font-size:12px;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-soft);
+      margin-bottom:8px;
+    ">Latest Magic Articles</div>
+
+    <!-- FEED ITEM 1 -->
+    <article style="
+      padding:16px 0;border-bottom:1px solid var(--border-soft);
+      display:flex;gap:14px;cursor:pointer;
+    ">
+      <div style="flex:1;">
+        <div id="mtg-feed1-headline" style="font-size:16px;font-weight:600;margin-bottom:4px;">
+          Loading…
+        </div>
+        <div id="mtg-feed1-summary" style="font-size:14px;color:var(--text-soft);margin-bottom:6px;">
+          —
+        </div>
+        <div style="font-size:11px;color:var(--text-soft);">Magic</div>
+      </div>
+
+      <div style="width:90px;height:70px;border-radius:10px;overflow:hidden;">
+        <img id="mtg-feed1-thumb" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </article>
+
+    <!-- FEED ITEM 2 -->
+    <article style="
+      padding:16px 0;border-bottom:1px solid var(--border-soft);
+      display:flex;gap:14px;cursor:pointer;
+    ">
+      <div style="flex:1;">
+        <div id="mtg-feed2-headline" style="font-size:16px;font-weight:600;margin-bottom:4px;">
+          Loading…
+        </div>
+        <div id="mtg-feed2-summary" style="font-size:14px;color:var(--text-soft);margin-bottom:6px;">
+          —
+        </div>
+        <div style="font-size:11px;color:var(--text-soft);">Magic</div>
+      </div>
+
+      <div style="width:90px;height:70px;border-radius:10px;overflow:hidden;">
+        <img id="mtg-feed2-thumb" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </article>
+
+  </section>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside style="display:flex;flex-direction:column;gap:22px;">
+
+    <!-- TRENDING CARDS -->
+    <section class="panel">
+      <div style="
+        font-size:13px;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-soft);
+        margin-bottom:10px;
+      ">Trending Magic Cards</div>
+
+      <div style="padding:10px 0;border-bottom:1px solid #20202a;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent);">
+          Top Card
+        </div>
+        <div id="mtg-trend1" style="font-size:13px;color:var(--text-main);">
+          Loading…
+        </div>
+      </div>
+
+      <div style="padding:10px 0;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent);">
+          Rising Card
+        </div>
+        <div id="mtg-trend2" style="font-size:13px;color:var(--text-main);">
+          Loading…
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMUNITY -->
+    <section class="panel">
+      <div style="
+        font-size:13px;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-soft);
+        margin-bottom:10px;
+      ">Magic Community Pulse</div>
+
+      <div style="padding:10px 0;border-bottom:1px solid #20202a;">
+        <div style="font-size:13px;color:var(--accent);">@mtgcentral</div>
+        <div id="mtg-social1" style="font-size:13px;color:var(--text-soft);">
+          Loading…
+        </div>
+      </div>
+
+      <div style="padding:10px 0;">
+        <div style="font-size:13px;color:var(--accent);">@planeswalkersunited</div>
+        <div id="mtg-social2" style="font-size:13px;color:var(--text-soft);">
+          Loading…
+        </div>
+      </div>
+    </section>
+
+  </aside>
+</main>
+
+<!-- FOOTER -->
+<footer style="
+  max-width:1180px;margin:0 auto;padding:30px 20px 50px;
+  font-size:12px;color:var(--text-soft);border-top:1px solid var(--border-soft);
+  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+">
+  <span>© 2026 Banking With Billy — Magic Newsroom</span>
+  <span>Part of the TCG Network</span>
+</footer>
+
+<!-- AUTO UPDATE SCRIPT -->
+<script>
+async function loadMTG() {
+  try {
+    const res = await fetch("data.json");
+    const data = await res.json();
+
+    document.getElementById("mtg-hero-headline").textContent = data.hero.headline;
+    document.getElementById("mtg-hero-summary").textContent = data.hero.summary;
+    document.getElementById("mtg-hero-source").textContent = data.hero.source;
+    document.getElementById("mtg-hero-time").textContent = data.hero.time;
+
+    document.getElementById("mtg-feed1-headline").textContent = data.feed[0].headline;
+    document.getElementById("mtg-feed1-summary").textContent = data.feed[0].summary;
+    document.getElementById("mtg-feed1-thumb").src = data.feed[0].thumbnail;
+
+    document.getElementById("mtg-feed2-headline").textContent = data.feed[1].headline;
+    document.getElementById("mtg-feed2-summary").textContent = data.feed[1].summary;
+    document.getElementById("mtg-feed2-thumb").src = data.feed[1].thumbnail;
+
+    document.getElementById("mtg-trend1").textContent = data.trending[0];
+    document.getElementById("mtg-trend2").textContent = data.trending[1];
+
+    document.getElementById("mtg-social1").textContent = data.social[0];
+    document.getElementById("mtg-social2").textContent = data.social[1];
+
+    document.getElementById("mtg-breaking").textContent = data.breaking;
+
+  } catch (e) {
+    console.log("Error loading Magic data:", e);
+  }
+}
+
+loadMTG();
+</script>
+
+</body>
+</html>
