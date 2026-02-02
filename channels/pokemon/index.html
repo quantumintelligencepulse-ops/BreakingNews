@@ -38,6 +38,7 @@
 
 <body>
 
+<!-- HEADER -->
 <header>
   <div style="
     max-width:1180px;margin:0 auto;padding:14px 20px;
@@ -70,6 +71,234 @@
   </div>
 </header>
 
+<!-- NAVIGATION -->
 <nav style="
   max-width:1180px;margin:0 auto;padding:6px 20px 10px;
-  display:flex;gap:10px;overflow-x:auto;scrollbar-width
+  display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;
+">
+  <button onclick="location.href='../yugioh/index.html'" style="
+    padding:6px 12px;border-radius:999px;border:1px solid transparent;
+    color:var(--text-soft);background:transparent;font-size:12px;
+    text-transform:uppercase;letter-spacing:0.12em;
+  ">Yu‑Gi‑Oh</button>
+
+  <button style="
+    padding:6px 12px;border-radius:999px;border:1px solid var(--accent);
+    background:var(--accent-soft);color:var(--accent);font-weight:600;
+    font-size:12px;text-transform:uppercase;letter-spacing:0.12em;
+  ">Pokémon</button>
+
+  <button onclick="location.href='../magic/index.html'" style="
+    padding:6px 12px;border-radius:999px;border:1px solid transparent;
+    color:var(--text-soft);background:transparent;font-size:12px;
+    text-transform:uppercase;letter-spacing:0.12em;
+  ">Magic</button>
+</nav>
+
+<!-- BREAKING TICKER -->
+<section style="
+  border-top:1px solid var(--border-soft);
+  border-bottom:1px solid var(--border-soft);
+  background:#0f0f15;
+">
+  <div style="
+    max-width:1180px;margin:0 auto;padding:8px 20px;
+    display:flex;align-items:center;gap:12px;font-size:12px;
+    color:var(--text-soft);text-transform:uppercase;letter-spacing:0.16em;
+  ">
+    <span style="
+      width:6px;height:6px;border-radius:999px;background:var(--accent);
+      box-shadow:0 0 10px rgba(255,203,5,0.8);
+    "></span>
+
+    <span style="color:var(--accent);font-weight:700;">
+      Pokémon Breaking
+    </span>
+
+    <span id="pkm-breaking">Loading latest Pokémon updates…</span>
+  </div>
+</section>
+
+<!-- MAIN LAYOUT -->
+<main style="
+  max-width:1180px;margin:32px auto 60px;padding:0 20px;
+  display:grid;grid-template-columns:2fr 1fr;gap:32px;
+">
+
+  <!-- LEFT COLUMN -->
+  <section>
+    <!-- HERO ARTICLE -->
+    <article style="
+      background:linear-gradient(145deg,#1a1a22,#101018);
+      border-radius:18px;padding:22px;border:1px solid var(--border-soft);
+      box-shadow:0 18px 40px rgba(0,0,0,0.7);margin-bottom:26px;
+    ">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent);">
+        Top Pokémon Story
+      </div>
+
+      <h1 id="pkm-hero-headline" style="font-size:28px;font-weight:800;margin-bottom:10px;">
+        Loading…
+      </h1>
+
+      <p id="pkm-hero-summary" style="font-size:15px;color:var(--text-soft);margin-bottom:16px;">
+        Please wait while we load the latest Pokémon news.
+      </p>
+
+      <div style="font-size:12px;color:var(--text-soft);display:flex;gap:10px;">
+        <span id="pkm-hero-source">—</span>
+        <span style="width:4px;height:4px;border-radius:999px;background:var(--border-soft);"></span>
+        <span id="pkm-hero-time">—</span>
+      </div>
+    </article>
+
+    <!-- FEED TITLE -->
+    <div style="
+      font-size:12px;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-soft);
+      margin-bottom:8px;
+    ">Latest Pokémon Articles</div>
+
+    <!-- FEED ITEM 1 -->
+    <article style="
+      padding:16px 0;border-bottom:1px solid var(--border-soft);
+      display:flex;gap:14px;cursor:pointer;
+    ">
+      <div style="flex:1;">
+        <div id="pkm-feed1-headline" style="font-size:16px;font-weight:600;margin-bottom:4px;">
+          Loading…
+        </div>
+        <div id="pkm-feed1-summary" style="font-size:14px;color:var(--text-soft);margin-bottom:6px;">
+          —
+        </div>
+        <div style="font-size:11px;color:var(--text-soft);">Pokémon</div>
+      </div>
+
+      <div style="width:90px;height:70px;border-radius:10px;overflow:hidden;">
+        <img id="pkm-feed1-thumb" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </article>
+
+    <!-- FEED ITEM 2 -->
+    <article style="
+      padding:16px 0;border-bottom:1px solid var(--border-soft);
+      display:flex;gap:14px;cursor:pointer;
+    ">
+      <div style="flex:1;">
+        <div id="pkm-feed2-headline" style="font-size:16px;font-weight:600;margin-bottom:4px;">
+          Loading…
+        </div>
+        <div id="pkm-feed2-summary" style="font-size:14px;color:var(--text-soft);margin-bottom:6px;">
+          —
+        </div>
+        <div style="font-size:11px;color:var(--text-soft);">Pokémon</div>
+      </div>
+
+      <div style="width:90px;height:70px;border-radius:10px;overflow:hidden;">
+        <img id="pkm-feed2-thumb" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </article>
+
+  </section>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside style="display:flex;flex-direction:column;gap:22px;">
+
+    <!-- TRENDING -->
+    <section class="panel">
+      <div style="
+        font-size:13px;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-soft);
+        margin-bottom:10px;
+      ">Trending Pokémon Cards</div>
+
+      <div style="padding:10px 0;border-bottom:1px solid #20202a;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent);">
+          Top Card
+        </div>
+        <div id="pkm-trend1" style="font-size:13px;color:var(--text-main);">
+          Loading…
+        </div>
+      </div>
+
+      <div style="padding:10px 0;">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent);">
+          Rising Card
+        </div>
+        <div id="pkm-trend2" style="font-size:13px;color:var(--text-main);">
+          Loading…
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMUNITY -->
+    <section class="panel">
+      <div style="
+        font-size:13px;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-soft);
+        margin-bottom:10px;
+      ">Pokémon Community Pulse</div>
+
+      <div style="padding:10px 0;border-bottom:1px solid #20202a;">
+        <div style="font-size:13px;color:var(--accent);">@pokecentral</div>
+        <div id="pkm-social1" style="font-size:13px;color:var(--text-soft);">
+          Loading…
+        </div>
+      </div>
+
+      <div style="padding:10px 0;">
+        <div style="font-size:13px;color:var(--accent);">@trainersunited</div>
+        <div id="pkm-social2" style="font-size:13px;color:var(--text-soft);">
+          Loading…
+        </div>
+      </div>
+    </section>
+
+  </aside>
+</main>
+
+<!-- FOOTER -->
+<footer style="
+  max-width:1180px;margin:0 auto;padding:30px 20px 50px;
+  font-size:12px;color:var(--text-soft);border-top:1px solid var(--border-soft);
+  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+">
+  <span>© 2026 Banking With Billy — Pokémon Newsroom</span>
+  <span>Part of the TCG Network</span>
+</footer>
+
+<!-- AUTO UPDATE SCRIPT -->
+<script>
+async function loadPKM() {
+  try {
+    const res = await fetch("data.json");
+    const data = await res.json();
+
+    document.getElementById("pkm-hero-headline").textContent = data.hero.headline;
+    document.getElementById("pkm-hero-summary").textContent = data.hero.summary;
+    document.getElementById("pkm-hero-source").textContent = data.hero.source;
+    document.getElementById("pkm-hero-time").textContent = data.hero.time;
+
+    document.getElementById("pkm-feed1-headline").textContent = data.feed[0].headline;
+    document.getElementById("pkm-feed1-summary").textContent = data.feed[0].summary;
+    document.getElementById("pkm-feed1-thumb").src = data.feed[0].thumbnail;
+
+    document.getElementById("pkm-feed2-headline").textContent = data.feed[1].headline;
+    document.getElementById("pkm-feed2-summary").textContent = data.feed[1].summary;
+    document.getElementById("pkm-feed2-thumb").src = data.feed[1].thumbnail;
+
+    document.getElementById("pkm-trend1").textContent = data.trending[0];
+    document.getElementById("pkm-trend2").textContent = data.trending[1];
+
+    document.getElementById("pkm-social1").textContent = data.social[0];
+    document.getElementById("pkm-social2").textContent = data.social[1];
+
+    document.getElementById("pkm-breaking").textContent = data.breaking;
+
+  } catch (e) {
+    console.log("Error loading Pokémon data:", e);
+  }
+}
+
+loadPKM();
+</script>
+
+</body>
+</html>
