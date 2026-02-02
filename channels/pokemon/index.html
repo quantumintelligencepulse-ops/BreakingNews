@@ -1,3 +1,75 @@
-<h1>Pokémon Channel</h1>
-<p>Articles and videos for Billy Breaks Pokémon.</p>
-<a href="/">Back to Banking With Billy Cards</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokémon News — Banking With Billy</title>
+
+  <style>
+    :root {
+      --bg: #0a0a0c;
+      --bg-soft: #141418;
+      --card: #1a1a20;
+      --accent: #ffcb05; /* Pokémon yellow */
+      --accent-soft: rgba(255, 203, 5, 0.18);
+      --text-main: #f5f5f5;
+      --text-soft: #b8b8c2;
+      --border-soft: #262632;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #15151d 0, #050509 55%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    .panel {
+      background: var(--bg-soft);
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      padding: 16px 16px 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div style="
+    max-width:1180px;margin:0 auto;padding:14px 20px;
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(10,10,15,0.96);backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--border-soft);
+  ">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="
+        width:26px;height:26px;border-radius:999px;
+        background:radial-gradient(circle at 30% 20%, #fff6c2 0, #ffcb05 40%, #c79a00 100%);
+        box-shadow:0 0 18px rgba(255,203,5,0.7);
+      "></div>
+
+      <div>
+        <div style="font-weight:800;letter-spacing:0.08em;font-size:14px;text-transform:uppercase;">
+          BANKING WITH BILLY
+        </div>
+        <div style="font-size:11px;text-transform:uppercase;color:var(--text-soft);letter-spacing:0.16em;">
+          Pokémon Newsroom
+        </div>
+      </div>
+    </div>
+
+    <div onclick="location.href='../../index.html'" style="
+      padding:6px 12px;border-radius:999px;border:1px solid var(--accent);
+      background:var(--accent-soft);color:var(--accent);font-weight:600;cursor:pointer;
+      font-size:13px;
+    ">Back to Homepage</div>
+  </div>
+</header>
+
+<nav style="
+  max-width:1180px;margin:0 auto;padding:6px 20px 10px;
+  display:flex;gap:10px;overflow-x:auto;scrollbar-width
