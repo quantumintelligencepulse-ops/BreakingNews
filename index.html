@@ -2,87 +2,95 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Banking With Billy Cards – TCG News Engine</title>
+<title>Banking With Billy Cards – The TCG News Engine</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="description" content="Banking With Billy Cards is your TCG news engine for Yu-Gi-Oh, Pokémon, and Magic: The Gathering — live market moves, set leaks, meta shifts, and top pulls.">
-<meta property="og:title" content="Banking With Billy Cards – TCG News Engine">
-<meta property="og:description" content="Daily coverage of Yu-Gi-Oh, Pokémon, and Magic: The Gathering — prices, pulls, and meta signals.">
+<meta name="description" content="The global TCG news engine for Yu-Gi-Oh, Pokémon, and Magic. Live signals, market moves, set leaks, competitive meta shifts, and premium editorial coverage.">
+<meta property="og:title" content="Banking With Billy Cards – The TCG News Engine">
+<meta property="og:description" content="Live TCG news, market signals, set leaks, and competitive insights across Yu-Gi-Oh, Pokémon, and Magic.">
 <meta property="og:type" content="website">
 
 <style>
-body{margin:0;font-family:system-ui,sans-serif;background:#0d1117;color:#e6edf3;}
+body{margin:0;font-family:system-ui,sans-serif;background:#0a0d12;color:#e6edf3;}
 a{text-decoration:none;color:inherit;}
-img{display:block;max-width:100%;}
+img{max-width:100%;display:block;border-radius:.6rem;}
+
+/* GLOBAL WRAPPER */
+.wrap{max-width:1400px;margin:auto;padding:1.5rem;}
 
 /* HEADER */
-.header{background:#161b22;border-bottom:1px solid #30363d;padding:1rem 0;}
-.header-inner{max-width:1300px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
-.logo-wrap{display:flex;align-items:center;gap:.6rem;}
-.logo-mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#f78166,#facc15);}
-.logo-text{font-weight:800;font-size:1.1rem;text-transform:uppercase;letter-spacing:.06em;color:#f78166;}
-.logo-tag{font-size:.75rem;color:#8b949e;}
-.nav a{margin-left:1.2rem;color:#8b949e;font-size:.9rem;}
-.nav a:hover{color:#f78166;}
+.header{background:#0f131a;border-bottom:1px solid #1f242d;padding:1rem 0;}
+.header-inner{max-width:1400px;margin:auto;display:flex;justify-content:space-between;align-items:center;}
+.logo-block{display:flex;align-items:center;gap:.7rem;}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#f97316,#facc15,#22c55e,#3b82f6);}
+.logo-title{font-weight:800;font-size:1.2rem;text-transform:uppercase;letter-spacing:.06em;color:#f97316;}
+.logo-tag{font-size:.75rem;color:#8b949e;margin-top:-4px;}
+.nav a{margin-left:1.4rem;color:#9ca3af;font-size:.9rem;}
+.nav a:hover{color:#f97316;}
 
-/* BREAKING / TICKER */
-.breaking{background:#f78166;color:#0d1117;padding:.5rem 0;font-weight:600;font-size:.9rem;}
-.breaking-inner{max-width:1300px;margin:auto;display:flex;gap:1rem;align-items:center;overflow:hidden;white-space:nowrap;}
-.breaking-label{text-transform:uppercase;font-size:.75rem;letter-spacing:.08em;}
-.breaking-items{animation:scroll 22s linear infinite;}
+/* TCG INDEX BAR */
+.indexbar{background:#11161d;border-bottom:1px solid #1f242d;padding:.7rem 0;}
+.index-inner{max-width:1400px;margin:auto;display:flex;gap:2rem;font-size:.85rem;}
+.index-item{display:flex;flex-direction:column;}
+.index-label{color:#8b949e;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;}
+.index-value{font-weight:600;}
+.index-up{color:#22c55e;}
+.index-down{color:#ef4444;}
+
+/* BREAKING NEWS */
+.breaking{background:#f97316;color:#0a0d12;padding:.6rem 0;font-weight:600;font-size:.9rem;}
+.breaking-inner{max-width:1400px;margin:auto;overflow:hidden;white-space:nowrap;}
+.breaking-track{display:inline-block;animation:scroll 22s linear infinite;}
 @keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
 /* HERO */
-.hero{max-width:1300px;margin:2rem auto;background:radial-gradient(circle at top left,#1f2933,#161b22);border:1px solid #30363d;border-radius:1.2rem;padding:2rem;display:grid;grid-template-columns:2fr 1.2fr;gap:2rem;}
-.hero-main h1{font-size:2.1rem;margin-bottom:.6rem;color:#f78166;}
-.hero-main p{color:#c9d1d9;font-size:1rem;line-height:1.6;margin-bottom:1rem;}
-.hero-meta{font-size:.8rem;color:#8b949e;}
-.hero-tag{display:inline-block;padding:.2rem .5rem;border-radius:999px;background:#f78166;color:#0d1117;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-right:.5rem;}
-.hero-image{border-radius:1rem;background:linear-gradient(135deg,#f97316,#22c55e,#3b82f6);display:flex;align-items:flex-end;justify-content:flex-start;padding:1rem;}
-.hero-image span{font-size:.85rem;font-weight:600;color:#0d1117;background:rgba(13,17,23,.8);padding:.3rem .6rem;border-radius:.6rem;}
+.hero{max-width:1400px;margin:2rem auto;background:linear-gradient(135deg,#1a1f27,#0f131a);border:1px solid #1f242d;border-radius:1.2rem;padding:2.5rem;display:grid;grid-template-columns:2fr 1.2fr;gap:2rem;}
+.hero h1{font-size:2.4rem;margin-bottom:.7rem;color:#f97316;}
+.hero p{color:#cbd5e1;font-size:1.05rem;line-height:1.6;margin-bottom:1rem;}
+.hero-tag{display:inline-block;padding:.25rem .6rem;border-radius:999px;background:#f97316;color:#0a0d12;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;}
+.hero-image{background:linear-gradient(135deg,#f97316,#22c55e,#3b82f6);border-radius:1rem;display:flex;align-items:flex-end;padding:1rem;}
+.hero-image span{background:rgba(10,13,18,.8);padding:.4rem .7rem;border-radius:.5rem;font-size:.85rem;font-weight:600;}
+
+/* DAILY PULSE */
+.pulse{max-width:1400px;margin:2rem auto;background:#11161d;border:1px solid #1f242d;border-radius:.9rem;padding:1rem;display:flex;gap:1.5rem;overflow-x:auto;}
+.pulse-item{min-width:200px;background:#161b22;padding:1rem;border-radius:.7rem;border:1px solid #1f242d;}
+.pulse-item h4{color:#f97316;margin-bottom:.4rem;font-size:.95rem;}
+.pulse-item p{font-size:.85rem;color:#cbd5e1;}
 
 /* MAIN GRID */
-.main-grid{max-width:1300px;margin:2rem auto;display:grid;grid-template-columns:2fr 1fr;gap:2rem;}
-.left-col{display:flex;flex-direction:column;gap:1.2rem;}
-.story{background:#161b22;border:1px solid #30363d;padding:1rem 1.2rem;border-radius:.9rem;transition:background .15s,border-color .15s,transform .15s;}
-.story:hover{background:#1b2230;border-color:#f78166;transform:translateY(-1px);}
-.story-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#8b949e;margin-bottom:.3rem;}
-.story h2{font-size:1.1rem;margin-bottom:.4rem;color:#f78166;}
-.story p{color:#c9d1d9;font-size:.9rem;line-height:1.5;}
-.story-meta{margin-top:.4rem;font-size:.75rem;color:#8b949e;}
+.main-grid{max-width:1400px;margin:2rem auto;display:grid;grid-template-columns:2fr 1fr;gap:2rem;}
+.left-col{display:flex;flex-direction:column;gap:1.5rem;}
+.story{background:#11161d;border:1px solid #1f242d;padding:1.2rem;border-radius:.9rem;transition:.15s;}
+.story:hover{background:#161b22;border-color:#f97316;transform:translateY(-2px);}
+.story-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:#8b949e;margin-bottom:.4rem;}
+.story h2{font-size:1.3rem;margin-bottom:.5rem;color:#f97316;}
+.story p{color:#cbd5e1;font-size:.95rem;line-height:1.5;}
+.story-meta{margin-top:.5rem;font-size:.8rem;color:#8b949e;}
 
 /* SIDEBAR */
-.sidebar{display:flex;flex-direction:column;gap:1.2rem;}
-.sidebar-block{background:#161b22;border:1px solid #30363d;padding:1rem;border-radius:.9rem;}
-.sidebar-block h3{color:#f78166;margin-bottom:.7rem;font-size:1rem;}
-.sidebar-block div{margin-bottom:.4rem;color:#c9d1d9;font-size:.85rem;}
+.sidebar{display:flex;flex-direction:column;gap:1.5rem;}
+.sidebar-block{background:#11161d;border:1px solid #1f242d;padding:1rem;border-radius:.9rem;}
+.sidebar-block h3{color:#f97316;margin-bottom:.7rem;font-size:1.1rem;}
+.sidebar-block div{margin-bottom:.5rem;color:#cbd5e1;font-size:.9rem;}
 .sidebar-block div:last-child{margin-bottom:0;}
-.badge{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#8b949e;margin-bottom:.4rem;}
 
-/* CHANNELS */
-.section{max-width:1300px;margin:3rem auto 0;}
-.section h2{color:#f78166;font-size:1.3rem;margin-bottom:.8rem;}
-.section-sub{font-size:.85rem;color:#8b949e;margin-bottom:1rem;}
-.channel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
-.channel-card{background:#161b22;border:1px solid #30363d;padding:1rem;border-radius:.9rem;transition:background .15s,border-color .15s,transform .15s;}
-.channel-card:hover{background:#1b2230;border-color:#f78166;transform:translateY(-1px);}
-.channel-thumb{width:100%;height:110px;border-radius:.6rem;margin-bottom:.7rem;background:#30363d;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:#8b949e;}
-.channel-title{color:#f78166;font-size:1rem;margin-bottom:.2rem;}
-.channel-meta{font-size:.8rem;color:#8b949e;}
-
-/* LATEST NEWS LIST */
-.news-list{max-width:1300px;margin:3rem auto 0;}
-.news-item{padding:.7rem 0;border-bottom:1px solid #30363d;font-size:.9rem;display:flex;justify-content:space-between;gap:1rem;}
-.news-item a{color:#e6edf3;}
-.news-item a:hover{color:#f78166;}
-.news-tag{font-size:.75rem;color:#8b949e;}
+/* CHANNEL HUB */
+.section{max-width:1400px;margin:3rem auto 0;}
+.section h2{color:#f97316;font-size:1.5rem;margin-bottom:.8rem;}
+.section-sub{font-size:.9rem;color:#8b949e;margin-bottom:1rem;}
+.channel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.channel-card{background:#11161d;border:1px solid #1f242d;padding:1rem;border-radius:.9rem;transition:.15s;}
+.channel-card:hover{background:#161b22;border-color:#f97316;transform:translateY(-2px);}
+.channel-thumb{width:100%;height:130px;background:#1f242d;border-radius:.6rem;margin-bottom:.8rem;display:flex;align-items:center;justify-content:center;color:#8b949e;font-size:.85rem;}
+.channel-title{color:#f97316;font-size:1.1rem;margin-bottom:.3rem;}
+.channel-meta{font-size:.85rem;color:#8b949e;}
 
 /* FOOTER */
-footer{background:#161b22;border-top:1px solid #30363d;margin-top:3rem;padding:2rem 0;}
-.footer-inner{max-width:1300px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
-.footer-col h4{color:#f78166;margin-bottom:.6rem;font-size:.95rem;}
-.footer-col a{display:block;color:#8b949e;margin-bottom:.35rem;font-size:.85rem;}
-.footer-col a:hover{color:#f78166;}
+footer{background:#0f131a;border-top:1px solid #1f242d;margin-top:3rem;padding:2rem 0;}
+.footer-inner{max-width:1400px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.footer-col h4{color:#f97316;margin-bottom:.6rem;font-size:1rem;}
+.footer-col a{display:block;color:#8b949e;margin-bottom:.4rem;font-size:.85rem;}
+.footer-col a:hover{color:#f97316;}
 .footer-bottom{text-align:center;margin-top:1.5rem;color:#8b949e;font-size:.8rem;}
 
 @media(max-width:900px){
@@ -98,10 +106,10 @@ footer{background:#161b22;border-top:1px solid #30363d;margin-top:3rem;padding:2
 <!-- HEADER -->
 <div class="header">
   <div class="header-inner">
-    <div class="logo-wrap">
-      <div class="logo-mark"></div>
+    <div class="logo-block">
+      <div class="logo-icon"></div>
       <div>
-        <div class="logo-text">Banking With Billy Cards</div>
+        <div class="logo-title">Banking With Billy Cards</div>
         <div class="logo-tag">The TCG News Engine</div>
       </div>
     </div>
@@ -115,125 +123,148 @@ footer{background:#161b22;border-top:1px solid #30363d;margin-top:3rem;padding:2
   </div>
 </div>
 
-<!-- BREAKING / TICKER -->
+<!-- TCG INDEX BAR -->
+<div class="indexbar">
+  <div class="index-inner">
+    <div class="index-item">
+      <div class="index-label">Yu‑Gi‑Oh Index</div>
+      <div class="index-value index-up">+3.2%</div>
+    </div>
+    <div class="index-item">
+      <div class="index-label">Pokémon Index</div>
+      <div class="index-value index-down">‑1.1%</div>
+    </div>
+    <div class="index-item">
+      <div class="index-label">Magic Index</div>
+      <div class="index-value index-up">+0.8%</div>
+    </div>
+  </div>
+</div>
+
+<!-- BREAKING NEWS -->
 <div class="breaking">
   <div class="breaking-inner">
-    <span class="breaking-label">Top Stories</span>
-    <div class="breaking-items">
-      Yu‑Gi‑Oh banlist rumors intensify • Pokémon leaks spark pre‑release price spikes • Magic reprints shake Commander staples • High‑grade slabs hit new auction highs • Local events reshape weekend meta •
+    <div class="breaking-track">
+      Pokémon leaks spark pre‑release spikes • Yu‑Gi‑Oh staples surge on banlist rumors • Magic reprints shake Commander prices • High‑grade slabs hit new auction highs • Local events reshape weekend meta •
     </div>
   </div>
 </div>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-main">
-    <div class="hero-tag">Live TCG Coverage</div>
-    <span class="hero-meta">Updated throughout the day</span>
-    <h1>Today’s Biggest Moves in Yu‑Gi‑Oh, Pokémon, and Magic</h1>
-    <p>Track live shifts in card prices, set hype, and competitive results across all major TCGs. Banking With Billy Cards brings together pulls, prices, and meta signals from every channel into one real‑time news engine.</p>
+  <div>
+    <div class="hero-tag">Live Coverage</div>
+    <h1>The Biggest TCG Moves Happening Right Now</h1>
+    <p>Real‑time signals across Yu‑Gi‑Oh, Pokémon, and Magic. From price action to set leaks to competitive shifts, this is the pulse of the entire trading‑card world — updated all day, every day.</p>
   </div>
   <div class="hero-image">
     <span>Signals from pulls, prices, and play.</span>
   </div>
 </div>
 
+<!-- DAILY PULSE -->
+<div class="pulse">
+  <div class="pulse-item">
+    <h4>Market Movers</h4>
+    <p>Yu‑Gi‑Oh staples up 4% in early trading.</p>
+  </div>
+  <div class="pulse-item">
+    <h4>Set Watch</h4>
+    <p>Pokémon pre‑release cards showing early demand.</p>
+  </div>
+  <div class="pulse-item">
+    <h4>Meta Shift</h4>
+    <p>Magic Commander decks reshaping weekend events.</p>
+  </div>
+  <div class="pulse-item">
+    <h4>Grading Trends</h4>
+    <p>PSA 10 premiums widening across modern hits.</p>
+  </div>
+</div>
+
 <!-- MAIN GRID -->
 <div class="main-grid">
 
-  <!-- LEFT COLUMN: FEATURED + ANALYSIS -->
+  <!-- LEFT COLUMN -->
   <div class="left-col">
     <div class="story">
-      <div class="story-label">Feature · Cross‑Market</div>
-      <h2>Why This Week’s Card Moves Could Reshape the Next Month</h2>
-      <p>From Yu‑Gi‑Oh staples to Pokémon chase cards and Magic Commander bombs, this week’s action is setting up the next wave of winners and losers. Here’s what the signals are saying.</p>
-      <div class="story-meta">Updated 2 hours ago · Long read</div>
+      <div class="story-label">Feature</div>
+      <h2>The Cross‑TCG Signals Driving This Week’s Market</h2>
+      <p>From Yu‑Gi‑Oh staples to Pokémon chase cards and Magic Commander bombs, this week’s action is setting up the next wave of winners and losers.</p>
+      <div class="story-meta">Updated 2 hours ago</div>
     </div>
 
     <div class="story">
-      <div class="story-label">Yu‑Gi‑Oh · Meta Watch</div>
-      <h2>Banlist Speculation Pushes Key Staples Into Overdrive</h2>
-      <p>Format‑defining cards are moving fast as players position ahead of the next announcement. We break down what’s running, what’s stalling, and what’s quietly climbing.</p>
-      <div class="story-meta">Posted today · 6 min read</div>
+      <div class="story-label">Yu‑Gi‑Oh</div>
+      <h2>Banlist Rumors Ignite a Surge in Key Staples</h2>
+      <p>Players are repositioning ahead of the next announcement. Here’s what’s running, what’s stalling, and what’s quietly climbing.</p>
+      <div class="story-meta">Posted today</div>
     </div>
 
     <div class="story">
-      <div class="story-label">Pokémon · Market Report</div>
-      <h2>Singles Spike Ahead of the Next Set — Which Cards Are Real?</h2>
+      <div class="story-label">Pokémon</div>
+      <h2>Singles Spike Ahead of the Next Set — What’s Real?</h2>
       <p>Pre‑release hype is lifting everything, but not every spike sticks. These are the cards with real demand behind the move.</p>
-      <div class="story-meta">Posted today · 4 min read</div>
+      <div class="story-meta">Posted today</div>
     </div>
 
     <div class="story">
-      <div class="story-label">Magic · Price Watch</div>
-      <h2>Reprints Shake Up Commander Staples — Some Cards Tank, Others Explode</h2>
-      <p>Reprint waves are rewriting price memory across Commander tables. We walk through the biggest winners, losers, and sleepers.</p>
-      <div class="story-meta">Posted yesterday · 5 min read</div>
+      <div class="story-label">Magic</div>
+      <h2>Reprints Shake Up Commander Staples</h2>
+      <p>Reprint waves are rewriting price memory across Commander tables. Some cards are tanking — others are exploding.</p>
+      <div class="story-meta">Posted yesterday</div>
     </div>
   </div>
 
   <!-- SIDEBAR -->
   <div class="sidebar">
     <div class="sidebar-block">
-      <div class="badge">Signals</div>
       <h3>Quick Signals</h3>
-      <div>• Pokémon EX and alt‑arts trending up into the weekend.</div>
-      <div>• Yu‑Gi‑Oh hand traps cooling after regional results.</div>
-      <div>• Magic Commander legends seeing renewed demand after new precons.</div>
-      <div>• Graded slabs in 9.5/10 commanding strong premiums.</div>
+      <div>• Pokémon EX and alt‑arts trending up.</div>
+      <div>• Yu‑Gi‑Oh hand traps cooling off.</div>
+      <div>• Magic Commander legends rising.</div>
+      <div>• Graded slabs commanding premiums.</div>
     </div>
 
     <div class="sidebar-block">
-      <div class="badge">Engagement</div>
       <h3>Card of the Day</h3>
       <div>Which card is most likely to spike next?</div>
       <div>• A: A staple hand trap</div>
       <div>• B: A mid‑tier Pokémon chase</div>
       <div>• C: A Commander‑only mythic</div>
-      <div style="margin-top:.4rem;font-size:.8rem;color:#8b949e;">Come back tomorrow for a new pick.</div>
     </div>
 
     <div class="sidebar-block">
-      <div class="badge">Trending</div>
       <h3>Most Read Today</h3>
-      <div>• Top 10 pulls from this week’s openings.</div>
-      <div>• The three cards quietly leading this month’s rotation.</div>
-      <div>• How grading is changing the ceiling on modern hits.</div>
-      <div>• What locals are playing heading into the weekend.</div>
+      <div>• Top 10 pulls this week</div>
+      <div>• The cards leading this month’s rotation</div>
+      <div>• How grading is changing modern hits</div>
+      <div>• What locals are playing this weekend</div>
     </div>
   </div>
 
 </div>
 
-<!-- CHANNELS -->
+<!-- CHANNEL HUB -->
 <div class="section">
   <h2>Explore Channels</h2>
-  <div class="section-sub">Jump into focused coverage for each game — pulls, prices, deck tech, and live reactions.</div>
+  <div class="section-sub">Focused coverage for each game — pulls, prices, deck tech, and live reactions.</div>
   <div class="channel-grid">
     <div class="channel-card">
-      <div class="channel-thumb">Yu‑Gi‑Oh highlights, pulls, and meta.</div>
+      <div class="channel-thumb">Yu‑Gi‑Oh Highlights</div>
       <div class="channel-title"><a href="channels/yugioh/">Yu‑Gi‑Oh Channel</a></div>
-      <div class="channel-meta">From Billy’s Yu‑Gi‑Oh Deck — openings, staples, and format shifts.</div>
+      <div class="channel-meta">Openings, staples, and format shifts.</div>
     </div>
     <div class="channel-card">
-      <div class="channel-thumb">Pokémon chase cards and market moves.</div>
+      <div class="channel-thumb">Pokémon Chase Cards</div>
       <div class="channel-title"><a href="channels/pokemon/">Pokémon Channel</a></div>
-      <div class="channel-meta">From Billy Breaks Pokémon — hits, hype, and long‑term holds.</div>
+      <div class="channel-meta">Hits, hype, and long‑term holds.</div>
     </div>
     <div class="channel-card">
-      <div class="channel-thumb">Magic Commander, formats, and reprints.</div>
+      <div class="channel-thumb">Magic Commander</div>
       <div class="channel-title"><a href="channels/magic/">Magic Channel</a></div>
-      <div class="channel-meta">From Billy’s SpellBook — EDH bombs, staples, and price memory.</div>
+      <div class="channel-meta">EDH bombs, staples, and price memory.</div>
     </div>
-  </div>
-</div>
-
-<!-- LATEST NEWS (for automation later) -->
-<div class="news-list">
-  <div class="section-sub" style="margin-bottom:.4rem;">Latest Articles</div>
-  <div class="news-item">
-    <a href="#">Loading latest articles…</a>
-    <span class="news-tag">Auto‑updated from your feed</span>
   </div>
 </div>
 
