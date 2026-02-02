@@ -2,7 +2,7 @@ import requests
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from html import unescape
-
+from extract_article_content import extract_article_content
 HTML_TEMPLATE = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
