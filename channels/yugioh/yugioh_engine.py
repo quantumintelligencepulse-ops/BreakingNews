@@ -22,16 +22,18 @@ except ImportError:
 
 
 # ---------------------------------------------------------
-# CONFIG — NO PATH EDITS NEEDED
+# PATHS — AUTOMATIC, NO EDITS NEEDED
 # ---------------------------------------------------------
-# This file lives in: BreakingNews/channels/yugioh/yugioh_engine.py
-# All paths are anchored to this folder.
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ARTICLES_DIR = os.path.join(BASE_DIR, "articles")
 DATA_JSON = os.path.join(BASE_DIR, "data.json")
 
 os.makedirs(ARTICLES_DIR, exist_ok=True)
 
+
+# ---------------------------------------------------------
+# CONFIG
+# ---------------------------------------------------------
 CHANNEL_URL = "https://www.youtube.com/channel/UCc_YGWm25v8oKIhMoQDQRLA"
 
 LMSTUDIO_API_URL = "http://127.0.0.1:1234/v1/chat/completions"
@@ -111,12 +113,12 @@ def extract_block(text: str, label: str) -> str:
 
 
 # ---------------------------------------------------------
-# YOUTUBE FETCHER
+# YOUTUBE METADATA ONLY (NO DOWNLOADS)
 # ---------------------------------------------------------
 def get_latest_video():
     ydl_opts = {
         "quiet": True,
-        "extract_flat": True,
+        "extract_flat": False,
         "playlistend": 1,
         "forcejson": True,
     }
@@ -124,42 +126,27 @@ def get_latest_video():
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(CHANNEL_URL, download=False)
         latest = info["entries"][0]
+
+        video_id = latest["id"]
+        thumb = f"https://i.ytimg.com/vi/{video_id}/maxresdefault.jpg"
+
         return {
-            "id": latest["id"],
+            "id": video_id,
             "title": latest["title"],
             "description": latest.get("description", ""),
             "uploader": latest.get("uploader", ""),
             "upload_date": latest.get("upload_date", ""),
             "tags": latest.get("tags", []),
-            "webpage_url": latest["url"]
+            "webpage_url": f"https://www.youtube.com/watch?v={video_id}",
+            "thumbnail_url": thumb
         }
 
 
-def download_video_and_thumb(video_url, out_dir):
-    os.makedirs(out_dir, exist_ok=True)
-
-    ydl_opts = {
-        "format": "mp4",
-        "outtmpl": os.path.join(out_dir, "%(title)s.%(ext)s"),
-        "writethumbnail": True,
-        "convert_thumbnails": "jpg",
-        "quiet": True,
-    }
-
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([video_url])
-
-    files = os.listdir(out_dir)
-    mp4 = next(f for f in files if f.endswith(".mp4"))
-    jpg = next(f for f in files if f.endswith(".jpg"))
-
-    return os.path.join(out_dir, mp4), os.path.join(out_dir, jpg)
-
-
 # ---------------------------------------------------------
-# ARTICLE BUILDER
+# ARTICLE BUILDER (EMBED ONLY)
 # ---------------------------------------------------------
-def build_article_html(page_title: str, article_text: str, video_src: str, thumb_src: str) -> str:
+def build_article_html(meta, article_text):
+    video_id = meta["id"]
     headline = extract_block(article_text, "HEADLINE")
     subheadline = extract_block(article_text, "SUBHEADLINE")
     lead = extract_block(article_text, "LEAD")
@@ -176,7 +163,7 @@ def build_article_html(page_title: str, article_text: str, video_src: str, thumb
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>{headline or page_title} | {BRAND_NAME}</title>
+  <title>{headline} | {BRAND_NAME}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="{subheadline[:160].replace('"', '')}">
   <style>
@@ -187,90 +174,49 @@ def build_article_html(page_title: str, article_text: str, video_src: str, thumb
       --card: #020617;
       --border: #111827;
     }}
-    * {{ box-sizing: border-box; margin: 0; padding: 0; }}
     body {{
       font-family: system-ui, sans-serif;
       background: var(--bg);
       color: var(--fg);
+      padding: 2rem;
       line-height: 1.7;
-      padding: 2rem 1.5rem 4rem;
     }}
     .shell {{ max-width: 960px; margin: 0 auto; }}
-    header {{
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 2rem;
+    iframe {{
+      width: 100%;
+      height: 420px;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
     }}
-    .brand {{
-      font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
-      font-size: 0.9rem; color: var(--accent);
-    }}
-    .pill {{
-      border-radius: 999px; border: 1px solid #1f2937;
-      padding: 0.35rem 0.9rem; font-size: 0.75rem;
-      text-transform: uppercase; letter-spacing: 0.12em; color: #9ca3af;
-    }}
-    .hero {{
-      background: var(--card); border-radius: 1rem; border: 1px solid var(--border);
-      padding: 1.5rem; margin-bottom: 2rem;
-    }}
-    .hero video {{
-      width: 100%; border-radius: 0.75rem; margin-bottom: 1.25rem; background: #000;
-    }}
-    h1 {{ font-size: 1.9rem; margin-bottom: 0.5rem; }}
-    h2 {{
-      font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.12em;
-      color: #9ca3af; margin-top: 2rem; margin-bottom: 0.75rem;
-    }}
-    .subheadline {{ color: #9ca3af; font-size: 0.98rem; margin-bottom: 0.75rem; }}
-    .lead {{ font-size: 1.02rem; margin-bottom: 1.5rem; }}
-    .body p {{ margin-bottom: 1rem; color: #d1d5db; font-size: 0.98rem; }}
-    ul {{ margin-left: 1.2rem; margin-bottom: 1.5rem; }}
-    li {{ margin-bottom: 0.4rem; }}
-    footer {{
-      margin-top: 3rem; font-size: 0.8rem; color: #6b7280;
-      border-top: 1px solid #111827; padding-top: 1.5rem;
-      display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-    }}
-    a {{ color: var(--accent); text-decoration: none; }}
-    a:hover {{ text-decoration: underline; }}
+    h1 {{ font-size: 2rem; margin-bottom: .5rem; }}
+    .subheadline {{ color: #9ca3af; margin-bottom: 1rem; }}
+    .lead {{ margin-bottom: 1.5rem; }}
+    .body p {{ margin-bottom: 1rem; }}
+    footer {{ margin-top: 3rem; color: #6b7280; }}
   </style>
 </head>
 <body>
   <div class="shell">
-    <header>
-      <div class="brand">{BRAND_NAME}</div>
-      <div class="pill">Video • Latest Coverage</div>
-    </header>
 
-    <article>
-      <section class="hero">
-        <video controls poster="{thumb_src}">
-          <source src="{video_src}" type="video/mp4">
-        </video>
-        <h1>{headline or page_title}</h1>
-        <div class="subheadline">{subheadline}</div>
-        <div class="lead">{lead}</div>
-      </section>
+    <iframe 
+      src="https://www.youtube.com/embed/{video_id}" 
+      frameborder="0" 
+      allowfullscreen>
+    </iframe>
 
-      <section class="body">
-        {body_html}
-      </section>
+    <h1>{headline}</h1>
+    <div class="subheadline">{subheadline}</div>
+    <div class="lead">{lead}</div>
 
-      <section>
-        <h2>Why it matters</h2>
-        <ul>{why_html}</ul>
-      </section>
+    <section class="body">{body_html}</section>
 
-      <section>
-        <h2>What’s next</h2>
-        <p>{nxt}</p>
-      </section>
-    </article>
+    <h2>Why it matters</h2>
+    <ul>{why_html}</ul>
 
-    <footer>
-      <div>© {year} {BRAND_NAME}. All rights reserved.</div>
-      <div><a href="../../index.html">Back to homepage</a></div>
-    </footer>
+    <h2>What’s next</h2>
+    <p>{nxt}</p>
+
+    <footer>© {year} {BRAND_NAME}</footer>
   </div>
 </body>
 </html>
@@ -284,15 +230,12 @@ def run_engine():
     print("Fetching latest video metadata...")
     meta = get_latest_video()
 
-    print("Downloading video + thumbnail...")
-    video_src, thumb_src = download_video_and_thumb(meta["webpage_url"], ARTICLES_DIR)
-
     print("Generating article text via LM Studio...")
     article_text = call_lmstudio(meta)
 
     print("Building HTML article...")
     page_title = clean_name(meta["title"])
-    html = build_article_html(page_title, article_text, video_src, thumb_src)
+    html = build_article_html(meta, article_text)
 
     out_path = os.path.join(ARTICLES_DIR, page_title + ".html")
     with open(out_path, "w", encoding="utf-8") as f:
@@ -302,11 +245,12 @@ def run_engine():
     data = {
         "headline": extract_block(article_text, "HEADLINE"),
         "summary": extract_block(article_text, "SUBHEADLINE"),
-        "thumbnail": thumb_src,
+        "thumbnail": meta["thumbnail_url"],
         "source": meta.get("uploader", ""),
         "time": meta.get("upload_date", ""),
         "trending": "Latest Video",
-        "top_story": True
+        "top_story": True,
+        "video_url": meta["webpage_url"]
     }
 
     with open(DATA_JSON, "w", encoding="utf-8") as f:
